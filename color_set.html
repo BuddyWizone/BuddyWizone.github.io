@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column; /* 세로 방향으로 정렬 */
+            align-items: center; /* 가운데 정렬 */
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            height: 100%; /* 전체 화면 높이 */
+            overflow: hidden; /* 스크롤 비활성화 */
+            background-image: url('images/backGround2.png'); /* 배경 이미지 경로 */
+            background-size:cover; /* 배경 이미지를 화면 전체에 맞게 조정 */
+            background-position: center; /* 이미지 중앙 정렬 */
+            background-repeat: no-repeat; /* 이미지 반복 방지 */
+        }
+        header {
+            margin-bottom: 20px; /* 헤더와 색상 세트 간의 간격 */
+        }
+        nav {
+            display: flex; /* 수평 방향으로 정렬 */
+            flex-wrap: wrap; /* 줄 바꿈 허용 */
+            justify-content: center; /* 가운데 정렬 */
+        }
+        .color-set {
+            width: 200px;
+            height: 250px; /* 세트의 전체 높이를 조정 */
+            margin: 10px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column; /* 세로 방향으로 설정 */
+            align-items: center; /* 가운데 정렬 */
+            justify-content: flex-start; /* 위쪽 정렬 */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.7);
+            padding-top: 10px;
+        }
+        .color-box {
+            width: 80px; /* 색상 박스의 가로폭을 조정 */
+            height: 80px; /* 색상 박스의 세로높이 */
+            border-radius: 4px;
+            margin: 5px; /* 색상 박스 간격 */
+            display: flex;
+            justify-content: center; /* 가운데 정렬 */
+            align-items: center; /* 세로 방향 가운데 정렬 */
+            color: transparent; /* 색상 코드 텍스트 색상 제거 */
+            font-weight: bold; /* 색상 코드 두껍게 */
+        }
+        .color-label {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center; /* 라벨을 가운데 정렬 */
+        }
+        .color-box-container {
+            display: flex; /* 색상 박스를 가로로 정렬 */
+            justify-content: center; /* 가로 방향 가운데 정렬 */
+            flex-wrap: wrap; /* 박스가 화면에 맞게 줄 바꿈 */
+        }
+        button {
+            padding: 5px 10px; /* 버튼 패딩 */
+            font-size: 14px; /* 버튼 글자 크기 */
+            cursor: pointer; /* 마우스 커서 변경 */
+            border-radius: 4px; /* 버튼 모서리 둥글게 */
+            border: 1px solid #ccc; /* 버튼 테두리 */
+            background-color: #f0f0f0; /* 버튼 배경색 */
+            margin: 0px 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <button onclick="resizeColorBoxes()">색상 박스 크기 조정</button>
+        <button onclick="resetColorBoxes()">색상 박스 크기 리셋</button>
+    </header>
+
+    <nav>
+        <div class="color-set">
+            <div class="color-box-container">
+                <div class="color-box" style="background-color: #934A5F;">#934A5F</div>
+                <div class="color-box" style="background-color: #57648C;">#57648C</div>
+                <div class="color-box" style="background-color: #C2B4D6;">#C2B4D6</div>
+                <div class="color-box" style="background-color: #E5E5E5;">#E5E5E5</div>
+            </div>
+            <div class="color-label">색상 세트 1</div>
+        </div>
+
+        <div class="color-set">
+            <div class="color-box-container">
+                <div class="color-box" style="background-color: #333D51;">#333D51</div>
+                <div class="color-box" style="background-color: #D3AC2B;">#D3AC2B</div>
+                <div class="color-box" style="background-color: #CBD0D8;">#CBD0D8</div>
+                <div class="color-box" style="background-color: #F4F3EA;">#F4F3EA</div>
+            </div>
+            <div class="color-label">색상 세트 2</div>
+        </div>
+
+        <div class="color-set">
+            <div class="color-box-container">
+                <div class="color-box" style="background-color: #354649;">#354649</div>
+                <div class="color-box" style="background-color: #6C7A89;">#6C7A89</div>
+                <div class="color-box" style="background-color: #A3C6C4;">#A3C6C4</div>
+                <div class="color-box" style="background-color: #E0E7E9;">#E0E7E9</div>
+            </div>
+            <div class="color-label">색상 세트 3</div>
+        </div>
+
+        <div class="color-set">
+            <div class="color-box-container">
+                <div class="color-box" style="background-color: #4C4556;">#4C4556</div>
+                <div class="color-box" style="background-color: #872642;">#872642</div>
+                <div class="color-box" style="background-color: #F6C026;">#F6C026</div>
+                <div class="color-box" style="background-color: #A0D3F9;">#A0D3F9</div>
+            </div>
+            <div class="color-label">색상 세트 4</div>
+        </div>
+
+        <div class="color-set">
+            <div class="color-box-container">
+                <div class="color-box" style="background-color: #433E49;">#433E49</div>
+                <div class="color-box" style="background-color: #928490;">#928490</div>
+                <div class="color-box" style="background-color: #DBC1AD;">#DBC1AD</div>
+                <div class="color-box" style="background-color: #F3E8EB;">#F3E8EB</div>
+            </div>
+            <div class="color-label">색상 세트 5</div>
+        </div>
+
+        <div class="color-set">
+            <div class="color-box-container">
+                <div class="color-box" style="background-color: #8E7C68;">#8E7C68</div>
+                <div class="color-box" style="background-color: #ED7458;">#ED7458</div>
+                <div class="color-box" style="background-color: #FFDC9F;">#FFDC9F</div>
+                <div class="color-box" style="background-color: #DDC9BC;">#DDC9BC</div>
+            </div>
+            <div class="color-label">색상 세트 6</div>
+        </div>
+
+        <div class="color-set">
+            <div class="color-box-container">
+                <div class="color-box" style="background-color: #344648;">#344648</div>
+                <div class="color-box" style="background-color: #7D8E95;">#7D8E95</div>
+                <div class="color-box" style="background-color: #FFBB98;">#FFBB98</div>
+                <div class="color-box" style="background-color: #FBE0C3;">#FBE0C3</div>
+            </div>
+            <div class="color-label">색상 세트 7</div>
+        </div>
+
+        <div class="color-set">
+            <div class="color-box-container">
+                <div class="color-box" style="background-color: #2D3E4E;">#2D3E4E</div>
+                <div class="color-box" style="background-color: #8CBDB9;">#8CBDB9</div>
+                <div class="color-box" style="background-color: #E09E50;">#E09E50</div>
+                <div class="color-box" style="background-color: #E8ECEB;">#E8ECEB</div>
+            </div>
+            <div class="color-label">색상 세트 8</div>
+        </div>
+
+        <div class="color-set">
+            <div class="color-box-container">
+                <div class="color-box" style="background-color: #072A40;">#072A40</div>
+                <div class="color-box" style="background-color: #178CA4;">#178CA4</div>
+                <div class="color-box" style="background-color: #18B7BE;">#18B7BE</div>
+                <div class="color-box" style="background-color: #F9F7F0;">#F9F7F0</div>
+            </div>
+            <div class="color-label">색상 세트 9</div>
+        </div>
+
+        <div class="color-set">
+            <div class="color-box-container">
+                <div class="color-box" style="background-color: #2B3A42;">#2B3A42</div>
+                <div class="color-box" style="background-color: #B0C4D9;">#B0C4D9</div>
+                <div class="color-box" style="background-color: #D8B47D;">#D8B47D</div>
+                <div class="color-box" style="background-color: #F1E5E5;">#F1E5E5</div>
+            </div>
+            <div class="color-label">색상 세트 10</div>
+        </div>
+    </nav>
+
+    <script>
+        function resizeColorBoxes() {
+            const colorBoxes = document.querySelectorAll('.color-box');
+            colorBoxes.forEach(box => {
+                box.style.width = '40px'; // 새로운 너비
+                box.style.height = '160px'; // 새로운 높이
+                box.style.margin = '10px auto';
+            });
+        }
+
+        function resetColorBoxes() {
+            const colorBoxes = document.querySelectorAll('.color-box');
+            colorBoxes.forEach(box => {
+                box.style.width = '80px'; // 새로운 너비
+                box.style.height = '80px'; // 새로운 높이
+                box.style.margin = '5px';
+            });
+        }
+    </script>
+</body>
+</html>
